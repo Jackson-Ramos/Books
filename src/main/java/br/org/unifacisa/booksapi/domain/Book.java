@@ -31,4 +31,8 @@ public class Book {
 	@JoinColumn(name = "author_id")
 	@JsonIgnoreProperties("books")
 	private Author author;
+	
+	@ManyToMany(mappedBy = "books")
+	@JsonIgnoreProperties("books")
+	private List<Library> libraries;
 }
