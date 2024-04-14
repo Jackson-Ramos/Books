@@ -61,7 +61,7 @@ public class BooksController {
 				);
 		
 		libraries.forEach(library -> {
-			library.add(book);
+			library.addBook(book);
 		});
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(booksRepository.save(book));

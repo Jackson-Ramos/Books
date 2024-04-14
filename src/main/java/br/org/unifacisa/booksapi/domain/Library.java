@@ -31,7 +31,7 @@ public class Library {
 	@JsonIgnoreProperties("libraries")
 	private List<Book> books;
 	
-	public void ddBooks(Book book) {
+	public void addBook(Book book) {
 		this.books.add(book);
 	}
 	
