@@ -1,5 +1,6 @@
 package br.org.unifacisa.booksapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "books")
 public class Book {
 	
 	@Id
@@ -27,5 +29,6 @@ public class Book {
 	
 	@ManyToOne
 	@JoinColumn(name = "author_id")
+	@JsonIgnoreProperties("books")
 	private Author author;
 }

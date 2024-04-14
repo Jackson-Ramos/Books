@@ -1,5 +1,6 @@
 package br.org.unifacisa.booksapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +25,6 @@ public class Author {
 	private String name;
 	
 	@OneToMany(mappedBy = "author")
+	@JsonIgnoreProperties(value = "author")
 	private List<Book> books;
 }
