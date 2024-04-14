@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -21,9 +22,10 @@ public class Book {
 	@Column(name = "title", nullable = false)
 	private String title;
 	
-	@Column(name = "author", nullable = false)
-	private String author;
-	
 	@Column(name = "description", nullable = false)
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author author;
 }

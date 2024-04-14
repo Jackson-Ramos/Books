@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class BookRequest {
-	private String title;
-	private String author;
-	private String description;
+@AllArgsConstructor
+public class AuthorRequestDto {
+	private String name;
 }
