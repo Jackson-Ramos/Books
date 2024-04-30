@@ -1,9 +1,9 @@
 package br.org.unifacisa.booksapi.controller;
 
-import br.org.unifacisa.booksapi.domain.Author;
-import br.org.unifacisa.booksapi.domain.Book;
-import br.org.unifacisa.booksapi.domain.Library;
-import br.org.unifacisa.booksapi.domain.dtos.BookRequestDto;
+import br.org.unifacisa.booksapi.domain.author.Author;
+import br.org.unifacisa.booksapi.domain.book.Book;
+import br.org.unifacisa.booksapi.domain.library.Library;
+import br.org.unifacisa.booksapi.domain.book.BookRequestDto;
 import br.org.unifacisa.booksapi.repositories.AuthorRepository;
 import br.org.unifacisa.booksapi.repositories.BookRepository;
 import br.org.unifacisa.booksapi.repositories.LibraryRepository;

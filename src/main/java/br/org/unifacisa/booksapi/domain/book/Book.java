@@ -1,5 +1,7 @@
-package br.org.unifacisa.booksapi.domain;
+package br.org.unifacisa.booksapi.domain.book;
 
+import br.org.unifacisa.booksapi.domain.library.Library;
+import br.org.unifacisa.booksapi.domain.author.Author;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity

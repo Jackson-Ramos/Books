@@ -1,7 +1,7 @@
 package br.org.unifacisa.booksapi.controller;
 
-import br.org.unifacisa.booksapi.domain.Library;
-import br.org.unifacisa.booksapi.domain.dtos.LibraryRequestDto;
+import br.org.unifacisa.booksapi.domain.library.Library;
+import br.org.unifacisa.booksapi.domain.library.LibraryRequestDto;
 import br.org.unifacisa.booksapi.repositories.LibraryRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

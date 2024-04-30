@@ -1,5 +1,6 @@
-package br.org.unifacisa.booksapi.domain;
+package br.org.unifacisa.booksapi.domain.library;
 
+import br.org.unifacisa.booksapi.domain.book.Book;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package br.org.unifacisa.booksapi.domain.dtos;
+package br.org.unifacisa.booksapi.domain.book;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
