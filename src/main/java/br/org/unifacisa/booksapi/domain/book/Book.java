@@ -38,4 +38,7 @@ public class Book implements Serializable {
 	@ManyToMany(mappedBy = "books")
 	@JsonIgnoreProperties("books")
 	private List<Library> libraries;
+	
+	public void setAuthor(Author author) {
+	}
 }
