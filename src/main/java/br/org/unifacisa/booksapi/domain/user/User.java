@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity(name = "users")
 @Table(name = "users")
-public class User implements UserDetails , Serializable {
+public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = -1037885837897163399L;
 	
 	@Id
@@ -24,7 +25,7 @@ public class User implements UserDetails , Serializable {
 	@Column(name = "user_id", unique = true, nullable = false)
 	private String id;
 	
-	@Column(name = "login",unique = true, nullable = false)
+	@Column(name = "login", unique = true, nullable = false)
 	private String login;
 	
 	@Column(name = "full_name", nullable = false)
@@ -47,15 +48,23 @@ public class User implements UserDetails , Serializable {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
-		name = "user_permission",
+			name = "user_permission",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "permission_id")
 	)
 	private List<Permission> permissions;
 	
+	public List<String> getRoles() {
+		ArrayList<String> roles = new ArrayList<>();
+		for (Permission permission : permissions) {
+			roles.add(permission.getPermission());
+		}
+		return roles;
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of();
+		return this.permissions;
 	}
 	
 	@Override
