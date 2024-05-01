@@ -13,7 +13,7 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private final UserRepository userRepository;
 	
-	public UserService(UserService userService) {
+	public UserService(final UserService userService) {
 		this.userRepository = userService.userRepository;
 	}
 	
