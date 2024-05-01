@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -15,7 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "books")
-public class Book {
+public class Book implements Serializable {
+	private static final long serialVersionUID = -9100469024047177455L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)

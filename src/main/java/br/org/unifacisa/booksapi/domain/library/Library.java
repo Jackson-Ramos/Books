@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -14,7 +15,8 @@ import java.util.List;
 @Table(name = "libraries")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Library {
+public class Library implements Serializable {
+	private static final long serialVersionUID = -8106984482890458068L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -35,6 +37,4 @@ public class Library {
 	public void addBook(Book book) {
 		this.books.add(book);
 	}
-	
-
 }
