@@ -4,9 +4,12 @@ import br.org.unifacisa.booksapi.domain.author.Author;
 import br.org.unifacisa.booksapi.domain.book.Book;
 import br.org.unifacisa.booksapi.domain.library.Library;
 import br.org.unifacisa.booksapi.domain.book.BookRequestDto;
+import br.org.unifacisa.booksapi.exceptions.NotFoundException;
 import br.org.unifacisa.booksapi.repositories.AuthorRepository;
 import br.org.unifacisa.booksapi.repositories.BookRepository;
 import br.org.unifacisa.booksapi.repositories.LibraryRepository;
+import br.org.unifacisa.booksapi.sevice.BooksService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,52 +21,26 @@ import java.util.Optional;
 @RequestMapping("/books")
 public class BooksController {
 	
-	private final BookRepository booksRepository;
-	private final AuthorRepository authorRepository;
-	private final LibraryRepository libraryRepository;
+	@Autowired
+	private final BooksService booksService;
 	
-	public BooksController
-			(
-					final BookRepository booksRepository,
-					final AuthorRepository authorRepository,
-					final LibraryRepository libraryRepository
-			) {
-		this.booksRepository = booksRepository;
-		this.authorRepository = authorRepository;
-		this.libraryRepository = libraryRepository;
+	public BooksController(BooksService booksService) {
+		this.booksService = booksService;
 	}
 	
 	@GetMapping
-	public List<Book> getAllBooks() {
-		return booksRepository.findAll();
+	public ResponseEntity<List<Book> >findAll() {
+		return booksService.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Book getBookById(@PathVariable final String id) {
-		return booksRepository.findById(id).orElse(null);
+	public ResponseEntity<Book> findById(@PathVariable final String id) {
+		return booksService.findById(id);
+		
 	}
 	
 	@PostMapping
-	public ResponseEntity<Object> createBook(@RequestBody BookRequestDto request) {
-		Optional<Author> existingAuthor = authorRepository.findById(request.getAuthorId());
-		
-		if (existingAuthor.isEmpty()) {
-			return ResponseEntity.badRequest().body("Author not found");
-		}
-		
-		List<Library> libraries = libraryRepository.findAllById(request.getLibrariesIds());
-		Book book = new Book(
-				null,
-				request.getTitle(),
-				request.getDescription(),
-				existingAuthor.get(),
-				libraries
-				);
-		
-		libraries.forEach(library -> {
-			library.addBook(book);
-		});
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(booksRepository.save(book));
+	public ResponseEntity<Book> createBook(@RequestBody BookRequestDto request) {
+		return booksService.save(request);
 	}
 }

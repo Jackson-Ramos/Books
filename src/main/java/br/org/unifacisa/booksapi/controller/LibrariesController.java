@@ -2,7 +2,10 @@ package br.org.unifacisa.booksapi.controller;
 
 import br.org.unifacisa.booksapi.domain.library.Library;
 import br.org.unifacisa.booksapi.domain.library.LibraryRequestDto;
+import br.org.unifacisa.booksapi.exceptions.NotFoundException;
 import br.org.unifacisa.booksapi.repositories.LibraryRepository;
+import br.org.unifacisa.booksapi.sevice.LibrariesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,30 +17,26 @@ import java.util.List;
 @RequestMapping("/libraries")
 public class LibrariesController {
 	
-	private final LibraryRepository librariesRepositori;
+	@Autowired
+	private final LibrariesService librariesService;
 	
-	public LibrariesController(LibraryRepository librariesRepositori) {
-		this.librariesRepositori = librariesRepositori;
+	public LibrariesController(LibrariesService librariesService) {
+		this.librariesService = librariesService;
+		
 	}
 	
 	@GetMapping
 	public ResponseEntity<List<Library>> getLibraries() {
-		return ResponseEntity.ok(librariesRepositori.findAll());
+		return librariesService.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Library> getLibrary(@PathVariable String id) {
-		return ResponseEntity.status(HttpStatus.OK).body(librariesRepositori.findById(id).orElse(null));
+		return librariesService.findById(id);
 	}
 	
 	@PostMapping
 	public ResponseEntity<Library> createLibrary(@RequestBody LibraryRequestDto libraryRequestDto) {
-		
-		Library library = new Library(
-				null,
-				libraryRequestDto.getName(),
-				Collections.EMPTY_LIST
-		);
-		return ResponseEntity.status(HttpStatus.CREATED).body(librariesRepositori.save(library));
+		return librariesService.save(libraryRequestDto);
 	}
 }
