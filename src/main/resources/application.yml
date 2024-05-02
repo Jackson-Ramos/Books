@@ -1,3 +1,8 @@
+Security:
+  jwt:
+    token:
+      secret-key: Jcode1998
+      expire-length: 3600000
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
