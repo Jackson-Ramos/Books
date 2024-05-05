@@ -5,7 +5,6 @@ import br.com.jcode.booksApi.exceptions.InvalidJwtAuthenticationException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
@@ -107,7 +106,7 @@ public class JwtTokenProvider {
 		return null;
 	}
 	
-	public boolean validateToken(String token) {
+	public Boolean validateToken(String token) {
 		DecodedJWT decodedJWT = decodedToken(token);
 		try {
 			if (decodedJWT.getExpiresAt().before(new Date())) {
