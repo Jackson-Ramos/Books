@@ -30,9 +30,9 @@ public class JwtTokenProvider {
 	@Value("${Security.jwt.token.expire-length: 3600000}")
 	private Long validityInMilliseconds = 3600000L;
 	
-	@Autowired
 	private final UserDetailsService userDetailsService;
 	
+	@Autowired
 	public JwtTokenProvider(final UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
 	}
@@ -106,7 +106,7 @@ public class JwtTokenProvider {
 		return null;
 	}
 	
-	public Boolean validateToken(String token) {
+	public boolean validateToken(String token) throws InvalidJwtAuthenticationException {
 		DecodedJWT decodedJWT = decodedToken(token);
 		try {
 			if (decodedJWT.getExpiresAt().before(new Date())) {
