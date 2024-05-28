@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @EqualsAndHashCode
@@ -16,6 +17,8 @@ import java.io.Serializable;
 @Entity(name = "permissions")
 @Table(name = "permissions")
 public class Permission implements GrantedAuthority, Serializable {
+	
+	@Serial
 	private static final long serialVersionUID = 96117122726749201L;
 	
 	@Id

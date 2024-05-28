@@ -3,6 +3,7 @@ package br.com.jcode.booksApi.domain.security;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class TokenDTO implements Serializable {
 	
+	@Serial
 	private static final long serialVersionUID = 1685846123444814146L;
 	
 	private String login;

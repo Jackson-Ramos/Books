@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Data
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class AccountCredentials  implements Serializable {
 	
+	@Serial
 	private static final long serialVersionUID = -4645680816422426344L;
 	
 	private String login;

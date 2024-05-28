@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +19,8 @@ import java.util.List;
 @Entity(name = "users")
 @Table(name = "users")
 public class User implements UserDetails, Serializable {
+	
+	@Serial
 	private static final long serialVersionUID = -1037885837897163399L;
 	
 	@Id

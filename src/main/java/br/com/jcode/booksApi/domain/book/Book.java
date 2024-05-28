@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "books")
 public class Book implements Serializable {
+	
+	@Serial
 	private static final long serialVersionUID = -9100469024047177455L;
 	
 	@Id
