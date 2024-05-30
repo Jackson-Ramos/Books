@@ -22,11 +22,11 @@ public class Permission implements GrantedAuthority, Serializable {
 	private static final long serialVersionUID = 96117122726749201L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "permission_id", unique = true, nullable = false)
-	private String id;
+	private Long id;
 	
-	@Column(name = "permission", nullable = false)
+	@Column(name = "permission") //nullable = false)
 	private String permission;
 	
 	@Override

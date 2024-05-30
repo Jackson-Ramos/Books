@@ -1,6 +1,6 @@
 CREATE TABLE libraries
 (
     id   UUID PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(60)
 );
 

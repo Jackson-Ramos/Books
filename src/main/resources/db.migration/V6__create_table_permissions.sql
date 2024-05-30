@@ -1,5 +1,4 @@
-CREATE TABLE permissions
-(
-    permission_id UUID PRIMARY KEY,
-    permission    VARCHAR(255) NOT NULL
+CREATE TABLE permissions (
+    permission_id BIGSERIAL PRIMARY KEY,
+    permission VARCHAR(20) NOT NULL UNIQUE
 );
